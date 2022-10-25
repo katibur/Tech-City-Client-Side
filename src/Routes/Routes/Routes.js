@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../../Components/Blog/Blog";
 import CourseCategories from "../../Components/CourseCategories/CourseCategories";
+import FAQ from "../../Components/FAQ/FAQ";
 import Home from "../../Components/Home/Home";
 import Login from "../../Components/Login/Login";
 import Profile from "../../Components/Profile/Profile";
@@ -30,20 +31,19 @@ export const routes = createBrowserRouter([
                 element: <SharedCourseCard></SharedCourseCard>,
                 loader: ({ params }) => fetch(`https://tech-city-server.vercel.app/courses/${params.id}`)
             },
-            {
-                path: '/blog',
-                element: <Blog></Blog>
-            },
-            {
-                path: '/faq',
-                element: <div className="fw-bolder bg-info px-5 py-4 mx-auto rounded"><h2>No FAQ This Time.</h2></div>
-            },
-
         ]
     },
     {
         path: '/login',
         element: <Login></Login>
+    },
+    {
+        path: '/blog',
+        element: <Blog></Blog>
+    },
+    {
+        path: '/faq',
+        element: <FAQ></FAQ>
     },
     {
         path: '/profile',
