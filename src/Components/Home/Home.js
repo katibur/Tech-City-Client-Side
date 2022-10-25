@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import Courses from '../Courses/Courses';
+import CoursesShortCard from '../CoursesShortCard/CoursesShortCard';
 
 
 const Home = () => {
@@ -9,12 +9,11 @@ const Home = () => {
 
     return (
         <div>
-            <h3>home page</h3>
             {
-                courses.map(course => <Courses
+                courses.map(course => <CoursesShortCard
                     key={course._id}
                     course={course}
-                ></Courses>)
+                ></CoursesShortCard>)
             }
         </div>
     );

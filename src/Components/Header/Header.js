@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 const Header = () => {
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top" className='mb-4'>
                 <Container>
                     <Navbar.Brand href="/">
                         <img
@@ -22,7 +22,7 @@ const Header = () => {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link href="/">Courses</Nav.Link>
-                            <Nav.Link>FAQ</Nav.Link>
+                            <Nav.Link href='/faq'>FAQ</Nav.Link>
                             <Nav.Link href="/blog">Blog</Nav.Link>
                         </Nav>
                         <Nav>

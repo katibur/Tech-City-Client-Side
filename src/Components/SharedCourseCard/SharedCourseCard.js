@@ -3,39 +3,43 @@ import { Link, useLoaderData } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
-const CourseCategories = () => {
+const SharedCourseCard = () => {
 
-    const categories = useLoaderData();
+    const course = useLoaderData();
+    console.log(course);
+
+    const { _id, title, image_url, author, enrolled, details, videos } = course;
+
 
     return (
         <div>
-            <Card style={{ width: 'auto' }}>
-                <Card.Img variant="top" src={categories[0].image_url} />
+            <Card style={{ width: 'auto', height: '200px' }}>
+                <Card.Img variant="top" src={image_url} />
                 <div className='d-flex justify-content-between align-items-center mx-3 mt-3'>
                     <div>
-                        <span className='fw-bold'>Course Instructor: </span>{categories[0].author.name}
+                        <span className='fw-bold'>Course Instructor: </span>{author.name}
                     </div>
 
                     <div>
-                        <span className='fw-bold'>Released On: </span> {categories[0].author.published_date}
+                        <span className='fw-bold'>Released On: </span> {author.published_date}
                     </div>
                 </div>
                 <div className='d-flex justify-content-between align-items-center mx-3 mt-3'>
                     <div>
-                        <span className='fw-bold'>Total Videos: </span> {categories[0].videos}
+                        <span className='fw-bold'>Total Videos: </span> {videos}
                     </div>
                     <div>
                         <span className='fw-bold'>Enrolled: </span>
-                        {categories[0].enrolled}
+                        {enrolled}
                     </div>
                 </div>
                 <Card.Body>
-                    <Card.Title>{categories[0].title}</Card.Title>
+                    <Card.Title>{title}</Card.Title>
                     <Card.Text>
-                        {categories[0].details}
+                        {details}
                     </Card.Text>
                     <div>
-                        <Link to={`/course/${categories[0]._id}`}><Button variant="primary">Get Premimum Access</Button></Link>
+                        <Link to={`/course/${_id}`}><Button variant="primary">Get Premimum Access</Button></Link>
                     </div>
                 </Card.Body>
             </Card>
@@ -43,4 +47,4 @@ const CourseCategories = () => {
     );
 };
 
-export default CourseCategories;
+export default SharedCourseCard;
