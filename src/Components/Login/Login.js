@@ -1,16 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Header from '../Header/Header';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { ButtonGroup, Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
 
-    const { providerLogIn, createUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
+    const { providerLogIn, signIn } = useContext(AuthContext);
+
+    const [error, setError] = useState('');
 
     const googleProvider = new GoogleAuthProvider();
     const gitHubProvider = new GithubAuthProvider();
@@ -21,8 +28,13 @@ const Login = () => {
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                setError('');
+                navigate(from, { replace: true });
             })
-            .catch(error => console.error('error: ', error))
+            .catch(error => {
+                console.error('error: ', error);
+                setError(error.message);
+            })
     }
 
     const handleGithubSignin = (event) => {
@@ -31,8 +43,13 @@ const Login = () => {
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                setError('');
+                navigate(from, { replace: true });
             })
-            .catch(error => console.error('error: ', error))
+            .catch(error => {
+                console.error('error: ', error);
+                setError(error.message);
+            })
     }
 
     const formHandler = event => {
@@ -44,13 +61,19 @@ const Login = () => {
         const password = form.password.value;
 
         console.log(email, password);
-        createUser(email, password)
+
+        signIn(email, password)
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                form.reset();
+                setError('');
+                navigate(from, { replace: true });
             })
-            .catch(error => console.error('error: ', error))
-
+            .catch(error => {
+                console.error('error: ', error);
+                setError(error.message);
+            })
     }
 
 
@@ -71,7 +94,7 @@ const Login = () => {
                         </Form.Group>
 
                         <Form.Text className="text-danger fw-bold">
-
+                            <p>  {error}</p>
                         </Form.Text>
 
                         <Button variant="primary" type="submit" className="mb-3">

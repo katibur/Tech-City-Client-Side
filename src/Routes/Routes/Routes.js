@@ -6,7 +6,9 @@ import Login from "../../Components/Login/Login";
 import Profile from "../../Components/Profile/Profile";
 import Registration from "../../Components/Registration/Registration";
 import SharedCourseCard from "../../Components/SharedCourseCard/SharedCourseCard";
+import TermsAndConditions from "../../Components/TermsAndConditions/TermsAndConditions";
 import Main from "../../Layouts/Main/Main";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -20,7 +22,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                element: <CourseCategories></CourseCategories>,
+                element: <PrivateRoute><CourseCategories></CourseCategories></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://tech-city-server.vercel.app/course-categories/${params.id}`)
             },
             {
@@ -49,6 +51,10 @@ export const routes = createBrowserRouter([
     {
         path: '/register',
         element: <Registration></Registration>
+    },
+    {
+        path: '/t&c',
+        element: <TermsAndConditions></TermsAndConditions>
     },
 
     {
