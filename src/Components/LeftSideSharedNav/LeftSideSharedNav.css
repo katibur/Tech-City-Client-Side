@@ -1,0 +1,7 @@
+.left-side-nav {
+    background-color: rgb(241, 239, 239);
+}
+
+.left-side-nav:hover {
+    background-color: rgb(213, 239, 230);
+}

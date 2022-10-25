@@ -1,8 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../../Components/Blog/Blog";
 import CourseCategories from "../../Components/CourseCategories/CourseCategories";
-import CoursesShortCard from "../../Components/CoursesShortCard/CoursesShortCard";
 import Home from "../../Components/Home/Home";
+import Login from "../../Components/Login/Login";
+import Profile from "../../Components/Profile/Profile";
+import Registration from "../../Components/Registration/Registration";
 import SharedCourseCard from "../../Components/SharedCourseCard/SharedCourseCard";
 import Main from "../../Layouts/Main/Main";
 
@@ -32,10 +34,23 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/faq',
-                element: <h2>No FAQ This Time.</h2>
-            }
+                element: <div className="fw-bolder bg-info px-5 py-4 mx-auto rounded"><h2>No FAQ This Time.</h2></div>
+            },
+            {
+                path: '/profile',
+                element: <Profile></Profile>
+            },
         ]
     },
+    {
+        path: '/login',
+        element: <Login></Login>
+    },
+    {
+        path: '/register',
+        element: <Registration></Registration>
+    },
+
     {
         path: '*',
         element: <h1>404 Error</h1>

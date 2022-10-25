@@ -42,7 +42,7 @@ const CoursesShortCard = ({ course }) => {
                         {rating?.number}
                     </div>
                     <div>
-                        <Link to={`/course/${_id}`}><Button variant="primary">Enroll Now</Button></Link>
+                        <Link to={`/course/${_id}`}><Button variant="primary">More Details</Button></Link>
                     </div>
                     <div>
                         <span className='fw-bold'>Enrolled: </span>
