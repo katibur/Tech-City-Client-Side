@@ -11,7 +11,8 @@ const LeftSideSharedNav = () => {
     }, [])
     return (
         <div>
-            <h3>Here You Can Find {categories.length} Courses.</h3>
+            <h3>Here You Can Find Our Courses.</h3>
+            <h4>Total Courses:  {categories.length}</h4>
             <div>
                 {
                     categories.map(category => <p

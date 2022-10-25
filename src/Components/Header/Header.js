@@ -8,7 +8,7 @@ const Header = () => {
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
                 <Container>
-                    <Navbar.Brand href="#home">
+                    <Navbar.Brand href="/">
                         <img
                             alt=""
                             src="https://roboticsandautomationnews.com/wp-content/uploads/2018/09/smart-city-copy.jpg"
@@ -21,15 +21,12 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="#features">Courses</Nav.Link>
-                            <Nav.Link href="#faq">FAQ</Nav.Link>
-                            <Nav.Link href="#blog">Blog</Nav.Link>
+                            <Nav.Link href="/">Courses</Nav.Link>
+                            <Nav.Link>FAQ</Nav.Link>
+                            <Nav.Link href="/blog">Blog</Nav.Link>
                         </Nav>
                         <Nav>
-                            <Nav.Link href="#deets">More deets</Nav.Link>
-                            <Nav.Link eventKey={2} href="#memes">
-                                Dank memes
-                            </Nav.Link>
+                            <Nav.Link href="/login">Log In</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
