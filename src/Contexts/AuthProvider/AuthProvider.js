@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import app from '../../firebase.config';
 
 
@@ -14,7 +14,9 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser => {
-            setUser(currentUser);
+            if (currentUser === null || currentUser.emailVerified) {
+                setUser(currentUser);
+            }
             setLoading(false);
         }));
         return () => {
@@ -27,14 +29,22 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, provider)
     }
 
+    const signIn = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+    }
+
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    const signIn = (email, password) => {
-        setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password);
+    const updateUserProfile = (profile) => {
+        return updateUserProfile(auth.currentUser, profile)
+    }
+
+    const verifyEmail = () => {
+        return sendEmailVerification(auth.currentUser);
     }
 
     const logOut = () => {
@@ -42,7 +52,17 @@ const AuthProvider = ({ children }) => {
         return signOut(auth)
     }
 
-    const authInfo = { user, providerLogIn, logOut, createUser, signIn, loading };
+    const authInfo = {
+        user,
+        providerLogIn,
+        logOut,
+        createUser,
+        signIn,
+        verifyEmail,
+        updateUserProfile,
+        setLoading,
+        loading
+    };
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

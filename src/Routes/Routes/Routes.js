@@ -38,15 +38,16 @@ export const routes = createBrowserRouter([
                 path: '/faq',
                 element: <div className="fw-bolder bg-info px-5 py-4 mx-auto rounded"><h2>No FAQ This Time.</h2></div>
             },
-            {
-                path: '/profile',
-                element: <Profile></Profile>
-            },
+
         ]
     },
     {
         path: '/login',
         element: <Login></Login>
+    },
+    {
+        path: '/profile',
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>
     },
     {
         path: '/register',

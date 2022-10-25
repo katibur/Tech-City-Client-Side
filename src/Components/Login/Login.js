@@ -8,6 +8,9 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
+import Card from 'react-bootstrap/Card';
+import toast from 'react-hot-toast';
+
 const Login = () => {
 
     const navigate = useNavigate();
@@ -15,7 +18,7 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
-    const { providerLogIn, signIn } = useContext(AuthContext);
+    const { providerLogIn, signIn, setLoading } = useContext(AuthContext);
 
     const [error, setError] = useState('');
 
@@ -60,7 +63,7 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(email, password);
+        // console.log(email, password);
 
         signIn(email, password)
             .then(res => {
@@ -68,11 +71,22 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 setError('');
-                navigate(from, { replace: true });
+
+                if (user.emailVerified) {
+
+                    navigate(from, { replace: true });
+                }
+                else {
+                    toast.error('Please Verify Your Email First.')
+                }
+
             })
             .catch(error => {
                 console.error('error: ', error);
                 setError(error.message);
+            })
+            .finally(() => {
+                setLoading(false);
             })
     }
 
@@ -81,6 +95,14 @@ const Login = () => {
         <div>
             <Header></Header>
             <Row>
+
+                <Col>
+                    <Card className="bg-dark text-white">
+                        <Card.Img src="https://cdn.shortpixel.ai/spai/q_lossy+w_998+to_webp+ret_img/https://www.onlc.com/blog/wp-content/uploads/2017/07/ONLC-2017-4-637x350.png" alt="Card image" />
+                    </Card>
+                </Col>
+
+
                 <Col lg='5' className='px-4 py-3 rounded' style={{ backgroundColor: '#CCFFFF' }}>
                     <Form onSubmit={formHandler}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -110,10 +132,6 @@ const Login = () => {
                     <p className='fw-bold'>Don't Have Any Account? <Link style={{ textDecoration: 'none' }} to='/register'>Sign Up</Link></p>
                 </Col>
 
-
-                <Col>
-
-                </Col>
             </Row>
         </div >
     );

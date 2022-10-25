@@ -2,9 +2,10 @@ import React, { useContext, useState } from 'react';
 import Header from '../Header/Header';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Col, Row } from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Registration = () => {
 
@@ -12,7 +13,7 @@ const Registration = () => {
 
     const [accepted, setAccepted] = useState(false);
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
 
     const registrationHandler = (event) => {
         event.preventDefault();
@@ -32,6 +33,37 @@ const Registration = () => {
                 console.log(user);
                 setError('');
                 form.reset();
+                handleUpdate(name, photoURL);
+                handleEmailVerification();
+                toast.success('Verification Email Sent.Check It Before Log In.')
+            })
+            .catch(error => {
+                console.error('error: ', error);
+                setError(error.message);
+            })
+    }
+
+    const handleUpdate = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error('error: ', error);
+                setError(error.message);
+            })
+    }
+
+    const handleEmailVerification = () => {
+        verifyEmail()
+            .then(res => {
+                const user = res.user;
+                console.log(user);
             })
             .catch(error => {
                 console.error('error: ', error);
@@ -89,10 +121,12 @@ const Registration = () => {
                     <p className='fw-bold'>Already Have An Account? <Link to='/login' style={{ textDecoration: 'none' }}>Login</Link></p>
                 </Col>
 
-
                 <Col>
-
+                    <Card className="bg-dark text-white">
+                        <Card.Img src="https://thumbs.dreamstime.com/b/informational-poster-office-programming-cartoon-life-company-employees-guy-standing-near-interactive-whiteboard-data-man-157469300.jpg" />
+                    </Card>
                 </Col>
+
             </Row>
         </div>
     );
