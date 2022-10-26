@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Button, Card, Col, Image, Row } from 'react-bootstrap';
-import { FaStar } from 'react-icons/fa';
+import { FaDownload } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import Header from '../Header/Header';
+import { useReactToPrint } from 'react-to-print'
+
 
 const CheckOut = () => {
     const { title, details, image_url, videos, rating, author, enrolled } = useLoaderData();
+
+    const downloadRef = useRef();
+    const handleDownload = useReactToPrint({
+        content: () => downloadRef.current
+    })
+
     return (
         <div>
             <Header></Header>
-            <Row className='w-75 mx-auto'>
+            <Row className='w-75 mx-auto' ref={downloadRef}>
                 <Col className='text-center'>
                     <Card className='mx-auto border p-2 mb-5'>
                         <h2>Course Name: <span className='fw-bold'> {title}</span></h2>
@@ -25,6 +33,10 @@ const CheckOut = () => {
                                     <p className='mb-0'><span className='fw-bold'>Course Instructor: </span>{author?.name}</p>
                                     <small><span className='fw-bold'>Released On: </span>{author?.published_date}</small>
                                 </div>
+                            </div>
+
+                            <div>
+                                <Button onClick={handleDownload}><FaDownload></FaDownload></Button>
                             </div>
                         </Card.Header>
 
