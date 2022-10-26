@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Image } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-import { FaDownload, FaStar } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const CoursesShortCard = ({ course }) => {
@@ -23,9 +23,6 @@ const CoursesShortCard = ({ course }) => {
                             <p className='mb-0'><span className='fw-bold'>Course Instructor: </span>{author?.name}</p>
                             <small><span className='fw-bold'>Released On: </span>{author?.published_date}</small>
                         </div>
-                    </div>
-                    <div>
-                        <FaDownload></FaDownload>
                     </div>
                 </Card.Header>
                 <Card.Img variant="top" src={image_url} />

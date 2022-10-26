@@ -44,12 +44,13 @@ const AuthProvider = ({ children }) => {
     }
 
     const verifyEmail = () => {
+        setLoading(true);
         return sendEmailVerification(auth.currentUser);
     }
 
     const logOut = () => {
         setLoading(true);
-        return signOut(auth)
+        return signOut(auth);
     }
 
     const authInfo = {

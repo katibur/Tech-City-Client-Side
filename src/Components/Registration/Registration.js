@@ -31,11 +31,11 @@ const Registration = () => {
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                toast.success('Verification Email Sent.Check It Before Log In.');
+                handleEmailVerification();
                 setError('');
                 form.reset();
                 handleUpdate(name, photoURL);
-                handleEmailVerification();
-                toast.success('Verification Email Sent.Check It Before Log In.')
             })
             .catch(error => {
                 console.error('error: ', error);
@@ -121,7 +121,7 @@ const Registration = () => {
                     <p className='fw-bold'>Already Have An Account? <Link to='/login' style={{ textDecoration: 'none' }}>Login</Link></p>
                 </Col>
 
-                <Col>
+                <Col lg='6'>
                     <Card className="bg-dark text-white">
                         <Card.Img src="https://thumbs.dreamstime.com/b/informational-poster-office-programming-cartoon-life-company-employees-guy-standing-near-interactive-whiteboard-data-man-157469300.jpg" />
                     </Card>

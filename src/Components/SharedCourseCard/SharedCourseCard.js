@@ -39,7 +39,7 @@ const SharedCourseCard = () => {
                         {details}
                     </Card.Text>
                     <div>
-                        <Link to={`/course/${_id}`}><Button variant="primary">Get Premimum Access</Button></Link>
+                        <Link to={`/premium/${_id}`}><Button variant="primary">Get Premimum Access</Button></Link>
                     </div>
                 </Card.Body>
             </Card>

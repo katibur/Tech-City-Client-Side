@@ -25,7 +25,7 @@ const Login = () => {
     const googleProvider = new GoogleAuthProvider();
     const gitHubProvider = new GithubAuthProvider();
 
-    const handleGoogleSignIn = (event) => {
+    const handleGoogleSignIn = event => {
         event.preventDefault();
         providerLogIn(googleProvider)
             .then(res => {
@@ -38,9 +38,12 @@ const Login = () => {
                 console.error('error: ', error);
                 setError(error.message);
             })
+            .finally(() => {
+                setLoading(false);
+            })
     }
 
-    const handleGithubSignin = (event) => {
+    const handleGithubSignin = event => {
         event.preventDefault();
         providerLogIn(gitHubProvider)
             .then(res => {
@@ -52,6 +55,9 @@ const Login = () => {
             .catch(error => {
                 console.error('error: ', error);
                 setError(error.message);
+            })
+            .finally(() => {
+                setLoading(false);
             })
     }
 
@@ -73,7 +79,6 @@ const Login = () => {
                 setError('');
 
                 if (user.emailVerified) {
-
                     navigate(from, { replace: true });
                 }
                 else {
@@ -96,7 +101,7 @@ const Login = () => {
             <Header></Header>
             <Row>
 
-                <Col>
+                <Col lg='6'>
                     <Card className="bg-dark text-white">
                         <Card.Img src="https://cdn.shortpixel.ai/spai/q_lossy+w_998+to_webp+ret_img/https://www.onlc.com/blog/wp-content/uploads/2017/07/ONLC-2017-4-637x350.png" alt="Card image" />
                     </Card>

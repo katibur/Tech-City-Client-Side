@@ -1,9 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../../Components/Blog/Blog";
+import CheckOut from "../../Components/CheckOut/CheckOut";
 import CourseCategories from "../../Components/CourseCategories/CourseCategories";
 import FAQ from "../../Components/FAQ/FAQ";
 import Home from "../../Components/Home/Home";
 import Login from "../../Components/Login/Login";
+import PremiumAccess from "../../Components/PremiumAccess/PremiumAccess";
 import Profile from "../../Components/Profile/Profile";
 import Registration from "../../Components/Registration/Registration";
 import SharedCourseCard from "../../Components/SharedCourseCard/SharedCourseCard";
@@ -23,7 +25,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                element: <PrivateRoute><CourseCategories></CourseCategories></PrivateRoute>,
+                element: <CourseCategories></CourseCategories>,
                 loader: ({ params }) => fetch(`https://tech-city-server.vercel.app/course-categories/${params.id}`)
             },
             {
@@ -32,6 +34,16 @@ export const routes = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://tech-city-server.vercel.app/courses/${params.id}`)
             },
         ]
+    },
+    {
+        path: '/premium/:id',
+        element: <PrivateRoute><PremiumAccess></PremiumAccess></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://tech-city-server.vercel.app/courses/${params.id}`)
+    },
+    {
+        path: '/checkout/:id',
+        element: <CheckOut></CheckOut>,
+        loader: ({ params }) => fetch(`https://tech-city-server.vercel.app/courses/${params.id}`)
     },
     {
         path: '/login',
@@ -47,7 +59,7 @@ export const routes = createBrowserRouter([
     },
     {
         path: '/profile',
-        element: <PrivateRoute><Profile></Profile></PrivateRoute>
+        element: <Profile></Profile>
     },
     {
         path: '/register',
