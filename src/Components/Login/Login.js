@@ -10,6 +10,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 import Card from 'react-bootstrap/Card';
 import toast from 'react-hot-toast';
+import Footer from '../Footer/Footer';
 
 const Login = () => {
 
@@ -75,16 +76,14 @@ const Login = () => {
             .then(res => {
                 const user = res.user;
                 console.log(user);
-                form.reset();
                 setError('');
-
                 if (user.emailVerified) {
                     navigate(from, { replace: true });
                 }
                 else {
                     toast.error('Please Verify Your Email First.')
                 }
-
+                form.reset();
             })
             .catch(error => {
                 console.error('error: ', error);
@@ -95,11 +94,10 @@ const Login = () => {
             })
     }
 
-
     return (
         <div>
             <Header></Header>
-            <Row>
+            <Row className='mb-5'>
 
                 <Col lg='6'>
                     <Card className="bg-dark text-white">
@@ -138,6 +136,7 @@ const Login = () => {
                 </Col>
 
             </Row>
+            <Footer></Footer>
         </div >
     );
 };

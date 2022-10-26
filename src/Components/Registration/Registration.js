@@ -6,6 +6,7 @@ import { Card, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
+import Footer from '../Footer/Footer';
 
 const Registration = () => {
 
@@ -78,7 +79,7 @@ const Registration = () => {
     return (
         <div>
             <Header></Header>
-            <Row>
+            <Row className='mb-5'>
                 <Col lg='5' className='px-5 py-3 rounded' style={{ backgroundColor: '#CCFFFF' }}>
                     <Form onSubmit={registrationHandler}>
 
@@ -128,6 +129,7 @@ const Registration = () => {
                 </Col>
 
             </Row>
+            <Footer></Footer>
         </div>
     );
 };

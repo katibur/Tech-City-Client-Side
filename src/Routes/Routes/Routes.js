@@ -32,7 +32,7 @@ export const routes = createBrowserRouter([
                 path: '/course/:id',
                 element: <SharedCourseCard></SharedCourseCard>,
                 loader: ({ params }) => fetch(`https://tech-city-server.vercel.app/courses/${params.id}`)
-            },
+            }
         ]
     },
     {
@@ -69,7 +69,6 @@ export const routes = createBrowserRouter([
         path: '/t&c',
         element: <TermsAndConditions></TermsAndConditions>
     },
-
     {
         path: '*',
         element: <h1>404 Error</h1>

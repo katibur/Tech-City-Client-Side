@@ -23,16 +23,21 @@ const CourseCategories = () => {
         <div ref={downloadRef}>
             <Card style={{ width: 'auto' }}>
 
-                <Card.Header>
+                <Card.Header className='d-flex justify-content-between align-items-center mx-3 mt-3'>
+                    <Card.Title><span className='fw-bolder'>Course Name: </span>{categories[0].title}</Card.Title>
+                    <div>
+                        <Button onClick={handleDownload}><FaDownload></FaDownload></Button>
+                    </div>
+                </Card.Header>
+
+                <Card.Img variant="top" src={categories[0].image_url} />
+
+                <Card.Body>
+
                     <div className='d-flex justify-content-between align-items-center mx-3 mt-3'>
                         <div>
                             <span className='fw-bold'>Course Instructor: </span>{categories[0].author.name}
                         </div>
-
-                        <div>
-                            <Button onClick={handleDownload}><FaDownload></FaDownload></Button>
-                        </div>
-
                     </div>
 
                     <div className='d-flex justify-content-between align-items-center mx-3 mt-3'>
@@ -65,12 +70,7 @@ const CourseCategories = () => {
                             <span className='fw-bold'> Welcome To This Course</span>
                         </div>
                     </div>
-                </Card.Header>
 
-                <Card.Img variant="top" src={categories[0].image_url} />
-
-                <Card.Body>
-                    <Card.Title><span className='fw-bolder'>Course Name: </span>{categories[0].title}</Card.Title>
                     <Card.Text>
                         <span className='fw-bolder'>Course Details: </span>
                         {categories[0].details}

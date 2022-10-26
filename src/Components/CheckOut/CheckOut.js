@@ -1,13 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Button, Card, Col, Image, Row } from 'react-bootstrap';
-import { FaDownload } from 'react-icons/fa';
+import { FaDownload, FaHandPaper } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import Header from '../Header/Header';
 import { useReactToPrint } from 'react-to-print'
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 
 const CheckOut = () => {
     const { title, details, image_url, videos, rating, author, enrolled } = useLoaderData();
+
+    const { user } = useContext(AuthContext);
 
     const downloadRef = useRef();
     const handleDownload = useReactToPrint({
@@ -20,7 +23,16 @@ const CheckOut = () => {
             <Row className='w-75 mx-auto' ref={downloadRef}>
                 <Col className='text-center'>
                     <Card className='mx-auto border p-2 mb-5'>
-                        <h2>Course Name: <span className='fw-bold'> {title}</span></h2>
+
+                        <h2 className='text-start'>Let's Start <FaHandPaper></FaHandPaper> {user?.displayName || 'Mr./Mrs. Unknown'}</h2>
+
+                        <div className='d-flex justify-content-between align-items-center'>
+
+                            <h2 className='text-start'>Course Name: <span className='fw-bold'> {title}</span></h2>
+                            <div>
+                                <Button onClick={handleDownload}><FaDownload></FaDownload></Button>
+                            </div>
+                        </div>
                         <Card.Header className='d-flex justify-content-between align-items-center'>
                             <div className='d-flex'>
                                 <Image
@@ -35,9 +47,7 @@ const CheckOut = () => {
                                 </div>
                             </div>
 
-                            <div>
-                                <Button onClick={handleDownload}><FaDownload></FaDownload></Button>
-                            </div>
+
                         </Card.Header>
 
                         <Image src={image_url} className='my-2'></Image>
@@ -60,6 +70,9 @@ const CheckOut = () => {
                                 <h5>{videos}</h5>
                             </div>
                         </div>
+
+
+
                         <Button><Link style={{ textDecoration: 'none', color: 'white', fontWeight: 'bold' }} to='/'>Back To Home</Link></Button>
                     </Card>
                 </Col>

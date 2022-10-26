@@ -5,10 +5,11 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { FaUser } from 'react-icons/fa';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
-
-
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { Link } from 'react-router-dom';
+
+
+import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 
 
 const Header = () => {
@@ -68,12 +69,9 @@ const Header = () => {
                                 }
 
                             </Nav.Link>
-
-
-
-
-
-
+                            <Nav.Link><span className='me-1'>Dark</span>
+                                <BootstrapSwitchButton checked={true} onstyle="outline-secondary" offstyle="outline-primary" />
+                            </Nav.Link>
                         </Nav>
 
                     </Navbar.Collapse>
