@@ -55,6 +55,14 @@ const AuthProvider = ({ children }) => {
 
 
 
+
+    const toggleTheme = () => {
+        alert('Dark mode coming soon.');
+    }
+
+
+
+
     const authInfo = {
         user,
         providerLogIn,
@@ -64,7 +72,8 @@ const AuthProvider = ({ children }) => {
         verifyEmail,
         updateUserProfile,
         setLoading,
-        loading
+        loading,
+        toggleTheme
     };
     return (
         <AuthContext.Provider value={authInfo}>

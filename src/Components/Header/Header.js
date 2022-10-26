@@ -14,8 +14,12 @@ import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 
 const Header = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, toggleTheme } = useContext(AuthContext);
 
+
+    const themeHandler = () => {
+        toggleTheme()
+    }
 
     return (
         <div>
@@ -70,7 +74,10 @@ const Header = () => {
 
                             </Nav.Link>
                             <Nav.Link><span className='me-1'>Dark</span>
-                                <BootstrapSwitchButton checked={true} onstyle="outline-secondary" offstyle="outline-primary" />
+
+
+                                <BootstrapSwitchButton checked={true} onstyle="outline-secondary" offstyle="outline-success" onChange={themeHandler} />
+
                             </Nav.Link>
                         </Nav>
 
