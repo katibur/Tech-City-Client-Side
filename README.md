@@ -18,4 +18,8 @@
 - React Router
 - React icons
 - FontAwesome icons
+<<<<<<< HEAD
 - React-To-Print (Library)
+=======
+- React-To-Print (Library)
+>>>>>>> cf0a6ee5b17e755a7b5f50388419060749711374
