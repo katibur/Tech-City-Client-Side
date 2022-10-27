@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { Button, Image, Tooltip } from 'react-bootstrap';
+import { Button, Image, NavLink, Tooltip } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { FaMoon, FaUser } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { Link } from 'react-router-dom';
@@ -16,7 +16,6 @@ const Header = () => {
 
     const themeHandler = () => {
         toggleTheme();
-
     }
 
     return (
@@ -35,16 +34,18 @@ const Header = () => {
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
+
+
                         <Nav className="me-auto">
-                            <Link style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }} className='me-4' to="/" >Courses</Link>
 
-                            <Link className='me-4' style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }} to='/faq' >FAQ</Link>
+                            <Link to="/" className='me-4' style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }}   >Courses</Link>
+                            <Link to='/faq' style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }} className='me-4' >FAQ</Link>
 
-                            <Link className='me-4' style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }} to="/blog" >Blog</Link>
+                            <Link to="/blog" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }} className='me-4' >Blog</Link>
                         </Nav>
-                        <Nav>
 
-                            <Nav.Link >
+                        <Nav>
+                            <Nav.Link>
                                 {
                                     user?.uid ?
                                         <OverlayTrigger
