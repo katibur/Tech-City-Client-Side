@@ -8,6 +8,8 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
 import Footer from '../Footer/Footer';
 
+import registration from '../../images/registration.jpg';
+
 const Registration = () => {
 
     const [error, setError] = useState('');
@@ -79,7 +81,7 @@ const Registration = () => {
     return (
         <div style={myStyle}>
             <Header></Header>
-            <Row className='mb-5'>
+            <Row className='mb-5 px-2'>
                 <Col lg='5' className='px-5 py-3 rounded' style={{ backgroundColor: '#CCFFFF' }}>
                     <Form onSubmit={registrationHandler}>
 
@@ -124,7 +126,7 @@ const Registration = () => {
 
                 <Col lg='6'>
                     <Card className="bg-dark text-white">
-                        <Card.Img src="https://thumbs.dreamstime.com/b/informational-poster-office-programming-cartoon-life-company-employees-guy-standing-near-interactive-whiteboard-data-man-157469300.jpg" />
+                        <Card.Img src={registration} />
                     </Card>
                 </Col>
 

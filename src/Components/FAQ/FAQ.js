@@ -4,6 +4,11 @@ import Header from '../Header/Header';
 import Carousel from 'react-bootstrap/Carousel';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
+import faq1 from '../../images/faq1.jpg';
+import faq2 from '../../images/faq2.jpg';
+import faq3 from '../../images/faq3.jpg';
+import faq4 from '../../images/faq4.jpg';
+
 const FAQ = () => {
 
     const { myStyle } = useContext(AuthContext);
@@ -18,21 +23,21 @@ const FAQ = () => {
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            src="https://images.slideplayer.com/26/8545736/slides/slide_6.jpg"
+                            src={faq1}
                             alt="First slide"
                         />
                     </Carousel.Item>
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            src="https://images.slideplayer.com/25/8044572/slides/slide_2.jpg"
+                            src={faq2}
                             alt="Second slide"
                         />
                     </Carousel.Item>
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            src="https://images.slideplayer.com/16/4975762/slides/slide_2.jpg"
+                            src={faq3}
                             alt="Third slide"
                         />
                     </Carousel.Item>
@@ -40,7 +45,7 @@ const FAQ = () => {
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            src="https://images.slideplayer.com/20/5934595/slides/slide_3.jpg"
+                            src={faq4}
                             alt="Third slide"
                         />
                     </Carousel.Item>

@@ -12,6 +12,8 @@ import Card from 'react-bootstrap/Card';
 import toast from 'react-hot-toast';
 import Footer from '../Footer/Footer';
 
+import login from '../../images/logIn.jpeg';
+
 const Login = () => {
 
     const navigate = useNavigate();
@@ -97,11 +99,11 @@ const Login = () => {
     return (
         <div style={myStyle}>
             <Header></Header>
-            <Row className='mb-5'>
+            <Row className='mb-5 px-2'>
 
                 <Col lg='6'>
                     <Card className="bg-dark text-white">
-                        <Card.Img src="https://cdn.shortpixel.ai/spai/q_lossy+w_998+to_webp+ret_img/https://www.onlc.com/blog/wp-content/uploads/2017/07/ONLC-2017-4-637x350.png" alt="Card image" />
+                        <Card.Img src={login} alt="Card image" />
                     </Card>
                 </Col>
 
