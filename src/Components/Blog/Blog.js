@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from '../Header/Header';
 import Accordion from 'react-bootstrap/Accordion';
 import Footer from '../Footer/Footer';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 
 const Blog = () => {
+
+    const { myStyle } = useContext(AuthContext);
+
     return (
-        <div>
+        <div style={myStyle}>
             <Header></Header>
-            <Accordion flush className='mx-auto w-75 h-auto mb-3 border rounded' defaultActiveKey="0">
+            <Accordion flush className='mx-auto my-5 w-75 h-auto border rounded' defaultActiveKey="0">
 
                 <Accordion.Item eventKey="0">
                     <Accordion.Header>What is `cors`?</Accordion.Header>

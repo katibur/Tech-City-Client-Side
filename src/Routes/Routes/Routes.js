@@ -1,3 +1,4 @@
+import { Image } from "react-bootstrap";
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../../Components/Blog/Blog";
 import CheckOut from "../../Components/CheckOut/CheckOut";
@@ -71,6 +72,6 @@ export const routes = createBrowserRouter([
     },
     {
         path: '*',
-        element: <h1>404 Error</h1>
+        element: <div className="text-center mx-auto"><Image className="mx-5" src="https://lh6.googleusercontent.com/Bu-pRqU_tWZV7O3rJ5nV1P6NjqFnnAs8kVLC5VGz_Kf7ws0nDUXoGTc7pP87tyUCfu8VyXi0YviIm7CxAISDr2lJSwWwXQxxz98qxVfMcKTJfLPqbcfhn-QEeOowjrlwX1LYDFJN"></Image></div>
     }
 ]);

@@ -5,19 +5,12 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import Header from '../Header/Header';
 
 import Form from 'react-bootstrap/Form';
+import Footer from '../Footer/Footer';
 
 
 const Profile = () => {
 
-    const { user, logOut } = useContext(AuthContext);
-
-    // const handleLogOut = () => {
-    //     logOut()
-    //         .then(res => {
-    //             <Navigate to='/login'></Navigate>
-    //         })
-    //         .catch(error => console.error('error: ', error))
-    // }
+    const { user, logOut, myStyle } = useContext(AuthContext);
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -33,10 +26,10 @@ const Profile = () => {
 
 
     return (
-        <div>
+        <div style={myStyle}>
             <Header></Header>
 
-            <Form className='mx-auto w-75' onSubmit={handleSubmit}>
+            <Form className='mx-auto my-5 w-75' onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control readOnly defaultValue={user?.email || ''} type="email" placeholder="Enter email" />
@@ -63,7 +56,7 @@ const Profile = () => {
                 }
 
             </Form>
-
+            <Footer></Footer>
         </div>
     );
 };

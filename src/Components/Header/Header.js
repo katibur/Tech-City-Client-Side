@@ -1,28 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Image, Tooltip } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { FaUser } from 'react-icons/fa';
+import { FaMoon, FaUser } from 'react-icons/fa';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { Link } from 'react-router-dom';
 
 
-import BootstrapSwitchButton from 'bootstrap-switch-button-react'
-
-
 const Header = () => {
 
-    const { user, toggleTheme } = useContext(AuthContext);
-
+    const { user, myStyle, toggleTheme } = useContext(AuthContext);
+    const [status, setStatus] = useState(false);
 
     const themeHandler = () => {
-        toggleTheme()
+        toggleTheme();
+
     }
 
     return (
-        <div>
+        <div style={myStyle}>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top" className='mb-4'>
                 <Container>
                     <Navbar.Brand href="/">
@@ -73,11 +71,9 @@ const Header = () => {
                                 }
 
                             </Nav.Link>
-                            <Nav.Link><span className='me-1'>Dark</span>
-
-
-                                <BootstrapSwitchButton checked={true} onstyle="outline-secondary" offstyle="outline-success" onChange={themeHandler} />
-
+                            <Nav.Link>
+                                <Button onClick={themeHandler} style={myStyle}><span style={{ fontWeight: 'bold' }} onClick={() => setStatus(!status)}>
+                                    {`${status ? 'Dark' : 'Light'}`}</span></Button>
                             </Nav.Link>
                         </Nav>
 

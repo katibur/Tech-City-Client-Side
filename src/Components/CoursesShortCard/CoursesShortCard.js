@@ -4,11 +4,15 @@ import Card from 'react-bootstrap/Card';
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
+
 const CoursesShortCard = ({ course }) => {
 
     const { _id, title, details, image_url, author, rating, enrolled } = course;
+
+
+
     return (
-        <div>
+        <div >
             <Card className='mb-4'>
                 <Card.Header className='d-flex justify-content-between align-items-center'>
                     <div className='d-flex'>

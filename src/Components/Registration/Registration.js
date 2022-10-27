@@ -14,7 +14,7 @@ const Registration = () => {
 
     const [accepted, setAccepted] = useState(false);
 
-    const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
+    const { createUser, updateUserProfile, verifyEmail, myStyle } = useContext(AuthContext);
 
     const registrationHandler = (event) => {
         event.preventDefault();
@@ -40,7 +40,7 @@ const Registration = () => {
             })
             .catch(error => {
                 console.error('error: ', error);
-                setError(error.message);
+
             })
     }
 
@@ -56,7 +56,7 @@ const Registration = () => {
             })
             .catch(error => {
                 console.error('error: ', error);
-                setError(error.message);
+
             })
     }
 
@@ -68,7 +68,7 @@ const Registration = () => {
             })
             .catch(error => {
                 console.error('error: ', error);
-                setError(error.message);
+
             })
     }
 
@@ -77,7 +77,7 @@ const Registration = () => {
     }
 
     return (
-        <div>
+        <div style={myStyle}>
             <Header></Header>
             <Row className='mb-5'>
                 <Col lg='5' className='px-5 py-3 rounded' style={{ backgroundColor: '#CCFFFF' }}>
@@ -101,10 +101,10 @@ const Registration = () => {
                             <Form.Label>Password</Form.Label>
                             <Form.Control name='password' type="password" placeholder="Password" />
                         </Form.Group>
-
+                        {/* 
                         <Form.Text className="text-danger fw-bold">
                             <p>  {error}</p>
-                        </Form.Text>
+                        </Form.Text> */}
 
                         <Form.Group className="mb-3" controlId="formBasicCheckbox">
                             <Form.Check

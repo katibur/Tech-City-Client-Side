@@ -19,7 +19,7 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
-    const { providerLogIn, signIn, setLoading } = useContext(AuthContext);
+    const { providerLogIn, signIn, setLoading, myStyle } = useContext(AuthContext);
 
     const [error, setError] = useState('');
 
@@ -95,7 +95,7 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div style={myStyle}>
             <Header></Header>
             <Row className='mb-5'>
 

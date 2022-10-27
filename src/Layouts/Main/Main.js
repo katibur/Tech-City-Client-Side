@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import LeftSideSharedNav from '../../Components/LeftSideSharedNav/LeftSideSharedNav';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Main = () => {
+
+    const { myStyle } = useContext(AuthContext);
+
     return (
-        <div>
+        <div style={myStyle}>
             <Header></Header>
             <Container>
                 <Row>

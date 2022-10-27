@@ -5,12 +5,13 @@ import { Link, useLoaderData } from 'react-router-dom';
 import Header from '../Header/Header';
 import { useReactToPrint } from 'react-to-print'
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import Footer from '../Footer/Footer';
 
 
 const CheckOut = () => {
     const { title, details, image_url, videos, rating, author, enrolled } = useLoaderData();
 
-    const { user } = useContext(AuthContext);
+    const { user, myStyle } = useContext(AuthContext);
 
     const downloadRef = useRef();
     const handleDownload = useReactToPrint({
@@ -18,7 +19,7 @@ const CheckOut = () => {
     })
 
     return (
-        <div>
+        <div style={myStyle}>
             <Header></Header>
             <Row className='w-75 mx-auto' ref={downloadRef}>
                 <Col className='text-center'>
@@ -77,6 +78,7 @@ const CheckOut = () => {
                     </Card>
                 </Col>
             </Row>
+            <Footer></Footer>
         </div>
     );
 };

@@ -12,6 +12,26 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const [myStyle, setMyStyle] = useState({
+        color: 'black',
+        backgroundColor: 'white'
+    });
+
+    const toggleTheme = () => {
+        if (myStyle.color === 'black') {
+            setMyStyle({
+                color: '#301934',
+                backgroundColor: 'gray'
+            })
+        }
+        else {
+            setMyStyle({
+                color: 'black',
+                backgroundColor: 'white'
+            })
+        }
+    }
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser => {
             if (currentUser === null || currentUser.emailVerified) {
@@ -56,9 +76,7 @@ const AuthProvider = ({ children }) => {
 
 
 
-    const toggleTheme = () => {
-        alert('Dark mode coming soon.');
-    }
+
 
 
 
@@ -73,6 +91,7 @@ const AuthProvider = ({ children }) => {
         updateUserProfile,
         setLoading,
         loading,
+        myStyle,
         toggleTheme
     };
     return (

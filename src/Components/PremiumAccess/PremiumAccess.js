@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { FaCheck } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 
 const PremiumAccess = () => {
     const course = useLoaderData();
+
+    const { myStyle } = useContext(AuthContext);
 
     const { _id, title } = course;
 
@@ -15,7 +19,7 @@ const PremiumAccess = () => {
     }
 
     return (
-        <div>
+        <div style={myStyle}>
             <Header></Header>
             <div className='mx-auto text-center'>
                 <h2 className='mb-5'>Our Plans For <span className='fw-bold'>{title}</span></h2>
@@ -70,6 +74,7 @@ const PremiumAccess = () => {
                     </Col>
 
                 </Row>
+                <Footer></Footer>
 
             </div>
         </div>
